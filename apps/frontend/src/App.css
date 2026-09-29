@@ -11,6 +11,9 @@
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -166,7 +169,7 @@
   padding: 8px 12px;
   font: inherit;
   color: var(--text-h);
-  background: var(--bg);
+  background: #ffffff;
 }
 
 .field input:focus {
@@ -274,8 +277,10 @@
 }
 
 .post-card {
-  max-width: 640px;
-  padding-bottom: 16px;
+  max-width: 720px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  padding: 24px 24px 16px;
 }
 
 .post-user-info {
@@ -324,8 +329,10 @@
 .post-footer {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   margin-top: 12px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 16px;
 }
 
 .post-action {
@@ -334,19 +341,161 @@
   gap: 6px;
   border: none;
   background: transparent;
-  padding: 0;
   font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 99px;
+  transition: 0.2s;
+  margin: -12px;
+}
+
+.post-action:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.post-like {
+  transition:
+    transform 0.15s ease,
+    color 0.15s ease;
+}
+
+.post-like-button:active .post-like {
+  transform: scale(0.8);
+}
+
+.post-like-button.liked .post-like {
+  color: #e0245e;
+}
+
+.posts-title {
+  margin: 0 0 16px;
+  font-size: 18px;
+}
+
+.posts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.posts-header .posts-title {
+  margin: 0;
+}
+
+.create-post-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-h);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.create-post-button:hover {
+  text-decoration: underline;
+}
+
+.post-modal {
+  width: min(640px, calc(100vw - 32px));
+  height: 500px;
+  border: none;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text-h);
+  outline: none;
+}
+
+.post-modal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.post-modal-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.post-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-modal-header h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.post-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  padding: 0;
   color: var(--text);
   cursor: pointer;
 }
 
-.post-action:hover {
-  color: var(--primary);
+.post-modal-close:hover {
+  color: var(--text-h);
 }
 
-.post-like:hover {
-  color: red;
-  fill: red;
+.post-modal-input,
+.post-modal-textarea {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text-h);
+  background: transparent;
+  resize: none;
+}
+
+.post-modal-textarea {
+  flex: 1;
+  min-height: 0;
+}
+
+.post-modal-input:focus,
+.post-modal-textarea:focus {
+  outline: none;
+  border-bottom-color: var(--primary);
+}
+
+.post-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 16px;
+  margin-top: auto;
+}
+
+.post-modal-submit {
+  border: none;
+  padding: 8px 20px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--primary);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.post-modal-submit:hover {
+  opacity: 0.9;
 }
 
 .post-date {
