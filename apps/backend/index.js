@@ -1,16 +1,20 @@
 const express = require('express');
-
-const app = express();
 const cors = require('cors');
 
-const port = 3000;
+const postsRoutes = require('./src/routes/posts.routes');
+
+const app = express();
+const PORT = 5000;
 
 app.use(cors());
+app.use(express.json());
 
 app.get('/api/data', (req, res) => {
-  res.json({ message: 'Hello world' });
+  res.json({ message: 'Привет от Express!' });
 });
 
-app.listen(port, () => {
-  console.log(`server listening on http://localhost:${port}`);
+app.use('/api/posts', postsRoutes);
+
+app.listen(PORT, () => {
+  console.log(`Сервер запущен на порту ${PORT}`);
 });
